@@ -19,6 +19,8 @@ app.use(bodyParser.json());
 // status check
 app.use('/status', router);
 
-app.listen(PORT, () => {
-  console.log(`Express server listening on port ${PORT}!`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Express server listening on port ${PORT}!`);
+// });
+
+module.exports = app;
