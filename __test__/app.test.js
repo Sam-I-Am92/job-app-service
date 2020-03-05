@@ -21,5 +21,5 @@ describe('Test the server endpoints', () => {
     expect(response.status).toBe(200);
     expect(response.body).toBe(`Hello World!`);
     done();
-  })
+  });
 });
