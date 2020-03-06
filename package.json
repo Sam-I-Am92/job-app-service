@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose --coverage --colors --watchAll",
-    "start": "nodemon ./src/start.js"
+    "start": "nodemon ./src/start.js",
+    "generateData": "node ./src/services/dataGen.js"
   },
   "jest": {
     "testEnvironment": "node",
