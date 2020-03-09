@@ -3,11 +3,11 @@ const fs = require('fs');
 const faker = require('faker');
 
 // create a stream & write headers for file
-const writePhoneBook = fs.createWriteStream('phonebook.csv');
-writePhoneBook.write(`id,firstName,lastName,phonenumber,adress\n`, 'utf8');
+const writeCompaniesData = fs.createWriteStream('companiesData.csv');
+writeCompaniesData.write(`id,companyName,jobTitle,jobLink\n`, 'utf8');
 
 // generate first, last names, phonenumber, address for csv
-const generatePhoneBook = (writer, encoding, callback) => {
+const generateCompaniesData = (writer, encoding, callback) => {
   let i = 100;
   let id = 0;
   const write = () => {
@@ -15,11 +15,11 @@ const generatePhoneBook = (writer, encoding, callback) => {
     do {
       i--;
       id++;
-      const firstName = faker.name.firstName();
-      const lastName = faker.name.lastName();
-      const phoneNumber = faker.phone.phoneNumber();
-      const address = faker.address.streetAddress();
-      const data = `${id},${firstName},${lastName},${phoneNumber},${address}\n`;
+      const companyName = faker.company.companyName(); // company name
+      const jobTitle = faker.name.jobTitle(); // job title
+      const jobLink = faker.internet.domainName(); // job link
+      // const address = faker.address.streetAddress(); // N/A
+      const data = `${id},${companyName},${jobTitle},${jobLink}\n`;
       if ( i === 0 ) {
         writer.write(data, encoding, callback);
       } else {
@@ -34,8 +34,8 @@ const generatePhoneBook = (writer, encoding, callback) => {
   write();
 }
 
-generatePhoneBook(writePhoneBook, 'utf-8', () => {
-  writePhoneBook.end();
+generateCompaniesData(writeCompaniesData, 'utf-8', () => {
+  writeCompaniesData.end();
 });
 
 // command to generate db from schema
