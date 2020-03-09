@@ -103,13 +103,3 @@ generateOffersData(writeOffersData, 'utf-8', () => {
 generateUsersData(writeUsersData, 'utf-8', () => {
   writeUsersData.end();
 });
-
-// command to generate db from schema
-// psql <database> < file.sql
-
-// absolute path to root
-// /Users/ParteekSSandhu/Desktop/HR/Boilerplate_Templates/Postgres_Server
-// ~/Desktop/HR/Boilerplate_Templates/Postgres_Server
-
-// command to import csv file into postgres
-// \Copy phoneBook(id,firstName,lastName,address) FROM '~/Desktop/HR/Boilerplate_Templates/Postgres_Server
