@@ -7,17 +7,9 @@ require('dotenv').config();
 // set variable to port env variable
 const PORT = process.env.PORT
 
-// client.connect((err) => {
-//   if (err) {
-//     return console.log('Could not connect to db: ', err);
-//   } else {
-//     console.log('Connected to db!');
-//   }
-// });
-
 client.connect()
   .then(() => {
-    console.log('CONNECTED TO DB!');
+    console.log(`Connected to ${process.env.DB_NAME} db!`);
   })
   .catch((err) => {
     console.log('Could not connect to DB: ', err);

@@ -13,20 +13,4 @@ const client = new pg.Client({
   port: process.env.DB_PORT
 });
 
-// client.connect()
-//   .then(() => {
-//     console.log('CONNECTED TO DB!');
-//   })
-//   .catch((err) => {
-//     console.log('Could not connect to DB: ', err);
-//   });
-
-// client.connect((err) => {
-//   if (err) {
-//     return console.log('Could not connect to db: ', err);
-//   } else {
-//     console.log('Connected to db!');
-//   }
-// });
-
   module.exports = client;
