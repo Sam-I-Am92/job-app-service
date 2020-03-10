@@ -1,7 +1,7 @@
 // import express app and listen for it here
 const app = require('./index.js');
 // import db connection
-const client = require('./models/db.js');
+const client = require('./models/database/db.js');
 // import env variables
 require('dotenv').config();
 // set variable to port env variable
