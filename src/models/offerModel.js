@@ -13,14 +13,14 @@ const getOffer = (req, res) => {
     .catch(err => res.status(404).send(err))
 };
 
-const getAllOffers = (req, res) => {
+const getAllOffers = (cb) => {
   // get all offers and send to server
   const stmt = `SELECT * FROM offers;`
 
   client
     .query(stmt)
-    .then(data => res.status(200).send(data))
-    .catch(err => res.status(404).send(err))
+    .then(data => cb(null, data))
+    .catch(err => cb(err))
 };
 
 module.exports = {

@@ -13,17 +13,17 @@ const getCompany = (req, res) => {
     .catch(err => res.status(404).send(err))
 };
 
-const getAllCompanies = (req, res) => {
+const getAllCompanies = (cb) => {
   // get all companies and send data to server
-  const stmt = `SELECT * FROM songs;`
+  const stmt = `SELECT * FROM companies;`
 
   client
     .query(stmt)
-    .then(data => res.status(200).send(data))
-    .catch(err => res.status(404).send(err))
+    .then(data => cb(null, data))
+    .catch(err => cb(err))
 };
 
 module.exports = {
-  getCompany = getCompany,
-  getAllCompanies = getAllCompanies
+  getCompany: getCompany,
+  getAllCompanies: getAllCompanies
 };
