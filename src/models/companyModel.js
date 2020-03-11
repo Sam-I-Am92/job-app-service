@@ -2,15 +2,19 @@
 const Promise = require('bluebird');
 const client = require('./database/db.js');
 
-const getCompany = (req, res) => {
+const getCompany = (req, cb) => {
   // get company info and send back to server
-  const companyId = req.params.id;
+  const companyId = req.userID;
+  // console.log(req.userID);
   const stmt = `SELECT * FROM companies WHERE id = ${companyId};`
-
+  // console.log("in getCompany: DATA:  " + data);
   client
     .query(stmt)
-    .then(data => res.status(200).send(data))
-    .catch(err => res.status(404).send(err))
+    .then(data => cb(null, data))
+    .then(() => {
+      console.log("in getCompany: DATA:  " + data);
+    })
+    .catch(err => cb(err))
 };
 
 const getAllCompanies = (cb) => {

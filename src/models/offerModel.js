@@ -2,15 +2,15 @@
 const Promise = require('bluebird');
 const client = require('./database/db.js');
 
-const getOffer = (req, res) => {
+const getOffer = (id, cb) => {
   // get offer info by id and send back to server
   const offerId = req.params.id;
   const stmt = `SELECT * FROM offers WHERE id = ${offerId};`
 
   client
     .query(stmt)
-    .then(data => res.status(200).send(data))
-    .catch(err => res.status(404).send(err))
+    .then(data => cb(null, data))
+    .catch(err => cb(err))
 };
 
 const getAllOffers = (cb) => {

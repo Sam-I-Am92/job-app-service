@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const status = require('./controllers/statusControllers.js');
+const client = require('./models/database/db.js');
 const companyController = require('./controllers/companyControllers.js');
 const offerController = require('./controllers/offerControllers.js');
 
