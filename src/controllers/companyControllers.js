@@ -72,6 +72,12 @@ companyController.get('/:id', (req, res) => {
     })
 });
 
+// COMPANY POST REQUESTS
+
+// COMPANY UPDATE REQUESTS
+
+// COMPANY DELETE REQUESTS
+
 
 
 module.exports = companyController;

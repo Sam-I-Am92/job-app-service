@@ -53,4 +53,10 @@ offerController.get('/:id', (req, res) => {
     })
 });
 
+// OFFERS POST REQUESTS
+
+// OFFERS UPDATE REQUESTS
+
+// OFFERS DELETE REQUESTS
+
 module.exports = offerController;
