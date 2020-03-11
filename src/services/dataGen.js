@@ -19,7 +19,7 @@ const generateCompaniesData = (writer, encoding, callback) => {
     do {
       i--;
       id++;
-      const companyName = faker.company.companyName(); // company name
+      const companyName = faker.lorem.word(); // company name
       const jobTitle = faker.name.jobTitle(); // job title
       const jobLink = faker.internet.domainName(); // job link
       const data = `${id},${companyName},${jobTitle},${jobLink}\n`;
@@ -46,9 +46,9 @@ const generateOffersData = (writer, encoding, callback) => {
       i--;
       id++;
       const oppType = 'Full-Time';
-      const initialComp = `$${faker.random.number()}`;
+      const initialComp = `${faker.random.number()}`;
       const negotiated = 'Yes';
-      const finalComp = `$${faker.random.number()}`;
+      const finalComp = `${faker.random.number()}`;
       const accepted = 'Yes';
       const data = `${id},${oppType},${initialComp},${negotiated},${finalComp},${accepted}\n`;
       if ( i === 0 ) {
