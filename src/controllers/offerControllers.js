@@ -1,23 +1,8 @@
-const express = require('express');
-const offerController = express.Router();
-const Promise = require('bluebird');
+// offers callback functions
 const client = require('../models/database/db.js');
-// const offerModel = require('../models/offerModel.js');
 
-// offerController.get('/', (req, res) => {
-//   offerModel.getAllOffers((err, data) => {
-//     if (err) {
-//       console.log(err.stack);
-//     } else {
-//       res.status(200).send(data);
-//     };
-//   });
-// });
 
-// OFFERS GET REQUESTS
-
-// get all offers
-offerController.get('/', (req, res) => {
+exports.getAllOffers = (req, res) => {
   // query db for all offers
   const stmt = `SELECT * FROM offers;`
 
@@ -31,10 +16,9 @@ offerController.get('/', (req, res) => {
       console.log(err.stack);
       res.status(404).send(err);
     })
-});
+}
 
-// get specific offer based on passed in id
-offerController.get('/:id', (req, res) => {
+exports.getOffer = (req, res) => {
   // set id var
   const id = req.params.id;
 
@@ -51,6 +35,4 @@ offerController.get('/:id', (req, res) => {
       console.log(err.stack);
       res.status(404).send(err);
     })
-});
-
-module.exports = offerController;
+}

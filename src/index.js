@@ -2,10 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
-const status = require('./controllers/statusControllers.js');
-const client = require('./models/database/db.js');
-const companyController = require('./controllers/companyControllers.js');
-const offerController = require('./controllers/offerControllers.js');
+const companiesRouter = require('./routers/companiesRouter.js');
+const offersRouter = require('./routers/offersRouter.js');
+const statusRouter = require('./routers/statusRouter.js');
 
 require('dotenv').config();
 
@@ -18,10 +17,10 @@ app.use(bodyParser.json());
 // serve static files to browser
 
 // status check
-app.use('/status', status);
+app.use('/status', statusRouter);
 
-app.use('/companies', companyController);
+app.use('/companies', companiesRouter);
 
-app.use('/offers', offerController);
+app.use('/offers', offersRouter);
 
 module.exports = app;

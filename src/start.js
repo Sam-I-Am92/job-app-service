@@ -4,10 +4,9 @@ const app = require('./index.js');
 const client = require('./models/database/db.js');
 // import env variables
 require('dotenv').config();
-// set variable to port env variable
-const PORT = process.env.PORT
 
-client.connect()
+client
+  .connect()
   .then(() => {
     console.log(`Connected to ${process.env.DB_NAME} db!`);
   })
@@ -16,6 +15,6 @@ client.connect()
   });
 
 // listen to app
-app.listen(PORT, () => {
-  console.log(`Express server listening on port ${PORT}!`);
+app.listen(process.env.PORT, () => {
+  console.log(`Express server listening on port ${process.env.PORT}!`);
 });
