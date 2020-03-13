@@ -1,6 +1,6 @@
-const express = require('express');
-const offerController = express.Router();
-const Promise = require('bluebird');
+// const express = require('express');
+// const offerController = express.Router();
+// const Promise = require('bluebird');
 const client = require('../models/database/db.js');
 // const offerModel = require('../models/offerModel.js');
 
@@ -17,7 +17,51 @@ const client = require('../models/database/db.js');
 // OFFERS GET REQUESTS
 
 // get all offers
-offerController.get('/', (req, res) => {
+// offerController.get('/', (req, res) => {
+//   // query db for all offers
+//   const stmt = `SELECT * FROM offers;`
+
+//   client
+//     .query(stmt)
+//     .then((result) => {
+//       console.log('OFFERS DATA: ', result.rows);
+//       res.status(200).send(result.rows)
+//     })
+//     .catch((err) => {
+//       console.log(err.stack);
+//       res.status(404).send(err);
+//     })
+// });
+
+// get specific offer based on passed in id
+// offerController.get('/:id', (req, res) => {
+//   // set id var
+//   const id = req.params.id;
+
+//   // query db for specific offer
+//   const stmt = `SELECT * FROM offers WHERE id = ${id};`
+
+//   client
+//     .query(stmt)
+//     .then((result) => {
+//       console.log('OFFERS DATA: ', result.rows);
+//       res.status(200).send(result.rows);
+//     })
+//     .catch((err) => {
+//       console.log(err.stack);
+//       res.status(404).send(err);
+//     })
+// });
+
+// OFFERS POST REQUESTS
+
+// OFFERS UPDATE REQUESTS
+
+// OFFERS DELETE REQUESTS
+
+// module.exports = offerController;
+
+exports.getAllOffers = (req, res) => {
   // query db for all offers
   const stmt = `SELECT * FROM offers;`
 
@@ -31,10 +75,9 @@ offerController.get('/', (req, res) => {
       console.log(err.stack);
       res.status(404).send(err);
     })
-});
+}
 
-// get specific offer based on passed in id
-offerController.get('/:id', (req, res) => {
+exports.getOffer = (req, res) => {
   // set id var
   const id = req.params.id;
 
@@ -51,12 +94,4 @@ offerController.get('/:id', (req, res) => {
       console.log(err.stack);
       res.status(404).send(err);
     })
-});
-
-// OFFERS POST REQUESTS
-
-// OFFERS UPDATE REQUESTS
-
-// OFFERS DELETE REQUESTS
-
-module.exports = offerController;
+}
