@@ -6,5 +6,5 @@ exports.msg = (req, res) => {
 
 exports.id = (req, res) => {
   console.log('ID: ', req.params.id);
-  res.status(200).json({message: req.params.id});
+  res.status(200).json(req.params.id);
 };
