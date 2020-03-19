@@ -18,7 +18,8 @@ CREATE TABLE companies (
   id SERIAL PRIMARY KEY,
   companyname TEXT NOT NULL,
   jobtitle TEXT NOT NULL,
-  joblink TEXT NOT NULL
+  joblink TEXT NOT NULL,
+  user_id INTEGER REFERENCES users(id)
 );
 
 CREATE TABLE offers (
@@ -27,5 +28,6 @@ CREATE TABLE offers (
   initialcomp INT NOT NULL,
   negotiated TEXT NOT NULL,
   finalcomp INT NOT NULL,
-  accepted TEXT NOT NULL
+  accepted TEXT NOT NULL,
+  user_id INTEGER REFERENCES users(id)
 );

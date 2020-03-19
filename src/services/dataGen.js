@@ -6,8 +6,8 @@ const faker = require('faker');
 const writeCompaniesData = fs.createWriteStream('companiesData.csv');
 const writeOffersData = fs.createWriteStream('offersData.csv');
 const writeUsersData = fs.createWriteStream('usersData.csv');
-writeCompaniesData.write(`id,companyName,jobTitle,jobLink\n`, 'utf8');
-writeOffersData.write(`id,opportunityType,initialComp,negotiated,finalComp,accepted\n`, 'utf8');
+writeCompaniesData.write(`id,companyName,jobTitle,jobLink,userId\n`, 'utf8');
+writeOffersData.write(`id,opportunityType,initialComp,negotiated,finalComp,accepted,userId\n`, 'utf8');
 writeUsersData.write(`id,firstName,lastName,userName,companiesApplied\n`, 'utf8');
 
 // generate first, last names, phonenumber, address for csv
@@ -22,7 +22,8 @@ const generateCompaniesData = (writer, encoding, callback) => {
       const companyName = faker.lorem.word(); // company name
       const jobTitle = faker.name.jobTitle(); // job title
       const jobLink = faker.internet.domainName(); // job link
-      const data = `${id},${companyName},${jobTitle},${jobLink}\n`;
+      const userId = faker.random.number({min: 1, max: 10});
+      const data = `${id},${companyName},${jobTitle},${jobLink},${userId}\n`;
       if ( i === 0 ) {
         writer.write(data, encoding, callback);
       } else {
@@ -50,7 +51,8 @@ const generateOffersData = (writer, encoding, callback) => {
       const negotiated = 'Yes';
       const finalComp = `${faker.random.number()}`;
       const accepted = 'Yes';
-      const data = `${id},${oppType},${initialComp},${negotiated},${finalComp},${accepted}\n`;
+      const userId = faker.random.number({min: 1, max: 10});
+      const data = `${id},${oppType},${initialComp},${negotiated},${finalComp},${accepted},${userId}\n`;
       if ( i === 0 ) {
         writer.write(data, encoding, callback);
       } else {
