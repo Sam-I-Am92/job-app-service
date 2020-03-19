@@ -5,6 +5,7 @@ const cors = require('cors');
 const companiesRouter = require('./routers/companiesRouter.js');
 const offersRouter = require('./routers/offersRouter.js');
 const statusRouter = require('./routers/statusRouter.js');
+const usersRouter = require('./routers/usersRouter.js');
 
 require('dotenv').config();
 
@@ -22,5 +23,7 @@ app.use('/status', statusRouter);
 app.use('/companies', companiesRouter);
 
 app.use('/offers', offersRouter);
+
+app.use('/users', usersRouter);
 
 module.exports = app;

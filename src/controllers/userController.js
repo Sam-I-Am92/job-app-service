@@ -1,5 +1,10 @@
 const client = require('../models/database/db.js');
 
+exports.id = (req, res) => {
+  console.log('userID: ', req.params.id);
+  res.status(200).json(req.params.id);
+}
+
 exports.getAllUsers = (req, res) => {
   // db query
   let stmt = `SELECT * FROM users;`
